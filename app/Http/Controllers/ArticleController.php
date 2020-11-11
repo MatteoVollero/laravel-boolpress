@@ -1,11 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Article;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
@@ -16,8 +13,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-      $articles = Article::where('user_id',Auth::id())->get();
-      return view('admin.posts.index',compact('articles'));
+        return view('guest.posts.index');
     }
 
     /**
@@ -44,22 +40,21 @@ class ArticleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Article  $article
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($id)
     {
-        $article = Article::where('slug', $slug)->first();
-        return view('admin.posts.show', compact('article'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Article  $article
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Article $article)
+    public function edit($id)
     {
         //
     }
@@ -68,10 +63,10 @@ class ArticleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Article  $article
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Article $article)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -79,10 +74,10 @@ class ArticleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Article  $article
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Article $article)
+    public function destroy($id)
     {
         //
     }
