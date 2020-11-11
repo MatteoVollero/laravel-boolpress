@@ -24,5 +24,6 @@ Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function()
 
   Route::get('/', 'HomeController@index')->name('home');
   //Eventualmente qui si puo inserire la resources
+  Route::resource('posts','ArticleController');
 
 });
