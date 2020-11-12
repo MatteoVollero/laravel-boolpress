@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Blog Home - Start Bootstrap Template</title>
+  <title>Boolpress</title>
 
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
@@ -18,17 +18,15 @@
 </head>
 
 <body>
-  <h1 class="my-4">Post author
-    <small>- {{ $spcificArticle->user->name}}</small>
-  </h1>
+  <h1 class="my-4">AUTHOR NAME: {{ $article->user->name }}</h1>
 
 
   <div class="col-md-12">
     <div class="card mb-4">
       <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
       <div class="card-body">
-        <h2 class="card-title">{{ $spcificArticle->title }}</h2>
-        <p class="card-text">{{ $spcificArticle->content }}</p>
+        <h2 class="card-title">{{ $article->title }}</h2>
+        <p class="card-text">{{ $article->content }}</p>
       </div>
     </div>
   </div>

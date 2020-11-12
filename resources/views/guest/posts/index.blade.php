@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Blog Home - Start Bootstrap Template</title>
+  <title>Boolpress</title>
 
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
@@ -66,7 +66,7 @@
             <div class="card-body">
               <h2 class="card-title">{{ $article->title }}</h2>
               <p class="card-text">{{ $article->content }}</p>
-              <a href={{ route('posts.show', $article->user->name, $article->slug) }} class="btn btn-primary">Read More &rarr;</a>
+              <a href={{ route('posts.show', $article->slug) }} class="btn btn-primary">Read More &rarr;</a>
             </div>
             <div class="card-footer text-muted">
               {{ $article->user->name }}

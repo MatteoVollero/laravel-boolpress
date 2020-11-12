@@ -45,10 +45,10 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($name,$slug)
+    public function show($slug)
     {
-        $specificArticle = Article::where('slug', $slug)->first();
-        return view('guest.posts.show', compact('specificArticle','name'));
+      $article = Article::where('slug', $slug)->first();
+      return view('guest.posts.show', compact('article'));
     }
 
     /**
