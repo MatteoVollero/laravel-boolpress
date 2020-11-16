@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <form class="" action="{{ route('admin.posts.store') }}" method="POST">
+    <form class="" action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
       @csrf
       @method("POST")
 
@@ -12,6 +12,11 @@
 
         <label for="slug">Slug</label>
         <input type="text" class="form-control" id="slug" name="slug" aria-describedby="emailHelp" placeholder="Inserisci Slug">
+      </div>
+
+      <div class="form-group">
+        <label for="image">Carica immagine...</label>
+        <input for="image" name="image" type="file" placeholder="inserisci immagine" accept="image/*">
       </div>
 
       <div class="form-group">

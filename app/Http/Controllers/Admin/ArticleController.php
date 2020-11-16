@@ -6,6 +6,9 @@ use App\Article;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use App\Mail\SendNewMail;
+use Illuminate\Support\Facades\Mail;
 
 class ArticleController extends Controller
 {
@@ -39,20 +42,25 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-
         $request->validate([
           'title' => 'required',
           'slug' => 'required|unique:articles',
-          'content' => 'required'
+          'content' => 'required',
+          'image' => 'image'
         ]);
+
+        $path = Storage::disk('public')->put('images',$data['image']);
 
         $newArticle = new Article;
         $newArticle->user_id = Auth::id();
         $newArticle->title = $data['title'];
         $newArticle->slug = $data['slug'];
         $newArticle->content = $data['content'];
+        $newArticle->image = $path;
 
         $newArticle->save();
+
+        Mail::to($newArticle->user->email)->send(new SendNewMail($newArticle));
 
         return redirect()->route('admin.posts.show', $newArticle->slug);
     }
